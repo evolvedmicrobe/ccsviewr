@@ -1,0 +1,15 @@
+Package: ccsviewr
+Type: Package
+Title: Examine subreads from a CCS alignment view.
+Version: 0.1.0
+Author: Nigel Delaney
+Maintainer: Nigel Delaney <ndelaney@pacb>
+Description: Display alignments of CCS subreads for viewing miscalls in data.
+License: MIT
+LazyData: TRUE
+SystemRequirements: C++11
+Imports:
+    Rcpp (>= 0.12.3),
+    pbbamr
+LinkingTo:
+    Rcpp
