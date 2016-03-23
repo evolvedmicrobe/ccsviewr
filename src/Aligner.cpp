@@ -42,24 +42,26 @@ Alignment Align(const std::string& target, const std::string& query)
 
   int I = query.length();
   int J = target.length();
-  int Score[I + 1][J + 1];
+  // If this is declared on the stack, it leads to an overflow in the
+  // C stack (see limits with a call to Cstack_info() )
+  IntegerMatrix Score(I + 1, J + 1);
 
   // Fill in score matrix
-  Score[0][0] = 0;
+  Score(0,0) = 0;
   for (int i = 1; i <= I; i++) {
-    Score[i][0] = i * INSERTION;
+    Score(i,0) = i * INSERTION;
   }
   for (int j = 1; j <= J; j++) {
-    Score[0][j] = j * DELETION;
+    Score(0,j) = j * DELETION;
   }
   for (int i = 1; i <= I; i++) {
     for (int j = 1; j <= J; j++) {
       bool isMatch = (query[i - 1] == target[j - 1]);
-      Score[i][j] = Max3(Score[i - 1][j - 1] + (isMatch ? MATCH : MISMATCH),
-            Score[i - 1][j] + INSERTION, Score[i][j - 1] + DELETION);
+      Score(i,j) = Max3(Score(i - 1,j - 1) + (isMatch ? MATCH : MISMATCH),
+                        Score(i - 1,j) + INSERTION, Score(i,j - 1) + DELETION);
     }
   }
-  int score = Score[I][J];
+  int score = Score(I, J);
 
   // Traceback, build up reversed aligned query, aligned target
   std::string raQuery, raTarget;
@@ -72,8 +74,8 @@ Alignment Align(const std::string& target, const std::string& query)
       move = 1;  // only insertion is possible
     } else {
       bool isMatch = (query[i - 1] == target[j - 1]);
-      move = ArgMax3(Score[i - 1][j - 1] + (isMatch ? MATCH : MISMATCH),
-                     Score[i - 1][j] + INSERTION, Score[i][j - 1] + DELETION);
+      move = ArgMax3(Score(i - 1,j - 1) + (isMatch ? MATCH : MISMATCH),
+                     Score(i - 1,j) + INSERTION, Score(i,j - 1) + DELETION);
     }
     // Incorporate:
     if (move == 0) {
