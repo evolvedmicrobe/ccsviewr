@@ -20,4 +20,4 @@ R Package Dependencies
 	- grid
 	- Rcpp
 	
-The code uses grid to plot the multiple sequence alignments, and prints to a PDF with Courier font by default.  The aligner used is a simple Smith Waterman, but with a Deletion/Insertion more likely than a mismatch in order to mirror the PacBio error modes.
+The code uses grid to plot the multiple sequence alignments, and prints to a PDF with Courier font by default.  The aligner used is a simple Smith Waterman, but with a deletion/insertion couplet more likely than a mismatch in order to mirror the PacBio error modes.
