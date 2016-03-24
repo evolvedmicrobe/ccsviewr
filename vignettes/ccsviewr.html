@@ -85,10 +85,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2>Installation</h2>
 <pre><code>install.packages(&quot;devtools&quot;)
 library(devtools)
-# Install pbbamr dependency
-install_github(&quot;PacificBiosciences/pbbamr&quot;)
+# Install pbbamr dependency, don't build vignettes (takes awhile, available online)
+install_github(&quot;PacificBiosciences/pbbamr&quot;, build_vignettes = FALSE)
 # Install ccsviewr
-install_github(&quot;PacificBiosciences/ccsviewr&quot;)
+install_github(&quot;PacificBiosciences/ccsviewr&quot;, build_vignettes = FALSE)
 </code></pre>
 <p>Note that on some PacBio machines, a configuration conflict may lead to the message <code>Problem with the SSL CA cert (path? access rights?)</code>. If this appears, simply run the following command before those given above:</p>
 <pre><code>httr::set_config( httr::config( ssl_verifypeer = 0L ) )</code></pre>

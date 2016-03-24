@@ -23,10 +23,10 @@ printed to the screen or to a PDF.  To use it, one needs:
 ```
 install.packages("devtools")
 library(devtools)
-# Install pbbamr dependency
-install_github("PacificBiosciences/pbbamr")
+# Install pbbamr dependency, don't build vignettes (takes awhile, available online)
+install_github("PacificBiosciences/pbbamr", build_vignettes = FALSE)
 # Install ccsviewr
-install_github("PacificBiosciences/ccsviewr")
+install_github("PacificBiosciences/ccsviewr", build_vignettes = FALSE)
 
 ```
 Note that on some PacBio machines, a configuration conflict may lead to the 
