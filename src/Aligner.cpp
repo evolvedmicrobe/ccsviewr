@@ -12,7 +12,7 @@ using namespace Rcpp;
 
 // SW parameters
 const int MATCH    =  0;
-const int MISMATCH = -2;
+const int MISMATCH = -3;
 const int DELETION = -1;
 const int INSERTION = -1;
 
