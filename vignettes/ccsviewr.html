@@ -11,7 +11,7 @@
 
 <meta name="author" content="Nigel Delaney" />
 
-<meta name="date" content="2016-03-23" />
+<meta name="date" content="2016-03-24" />
 
 <title>ccsviewr</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title">ccsviewr</h1>
 <h4 class="author"><em>Nigel Delaney</em></h4>
-<h4 class="date"><em>2016-03-23</em></h4>
+<h4 class="date"><em>2016-03-24</em></h4>
 
 </div>
 
@@ -209,10 +209,11 @@ clean_alns =<span class="st"> </span>alns[-bad_alns]</code></pre></div>
 <p>Now that we have an alignment frame, we can make a PDF of the multiple sequence alignment.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plotMSA</span>(df, <span class="st">&quot;FullAlignment.pdf&quot;</span>)</code></pre></div>
 <p>The PDF is produced by grid graphics under the hood, which can take a heck of long time for large alignments. As such, it is often much faster to output a subsection of the entire alignment, which also leads to smaller PDF files that are easier to load and display in PowerPoint.</p>
-<p>To select a subsection of the alignment you have two options.</p>
+<p>To select a subsection of the alignment you have three options.</p>
 <ul>
 <li><p>You can examine the whole alignment file and use the position guides at the top to select a window to plot (every 10 positions in the alignment are identified by a “|”), and then use those guides to define a window</p></li>
 <li><p>You can write the data frame to a CSV file (e.g. <code>write.csv(df, file=&quot;myMSA.csv&quot;)</code>) and then load it into a simple text editor to identify the window to plot.</p></li>
+<li><p>You can calculate the window of interest <strong>a priori</strong>. The refernce sequence begins at the location given by the <code>tstart</code> field in the pbi index file for the aligned CCS BAM file. This bit of information combined with simple text manipulations can tell you where any reference coordinate is located in the alignment space.</p></li>
 </ul>
 <p>With a subwindow defined, you can now easily make a PDF plot for a collaborator or powerpoint. As an example, we’ll look at one window where a “C” in the reference has been emitted as a “CC” in consensus <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. Additionally, we will make the plot a bit prettier by changing the read names to remove the long movie/hold prefix.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Clean up the read names</span>

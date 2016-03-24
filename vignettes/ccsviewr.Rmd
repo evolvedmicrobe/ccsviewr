@@ -138,7 +138,7 @@ long time for large alignments.  As such, it is often much faster to output a
 subsection of the entire alignment, which also leads to smaller PDF files that
 are easier to load and display in PowerPoint.
 
-To select a subsection of the alignment you have two options.
+To select a subsection of the alignment you have three options.
 
 - You can examine the whole alignment file and use the position guides at
 the top to select a window to plot (every 10 positions in the alignment are
@@ -146,6 +146,13 @@ identified by a "|"), and then use those guides to define a window
 
 - You can write the data frame to a CSV file (e.g. `write.csv(df, file="myMSA.csv")`)
 and then load it into a simple text editor to identify the window to plot.
+
+- You can calculate the window of interest **a priori**.  The refernce sequence
+begins at the location given by the `tstart` field in the pbi index file for the
+aligned CCS BAM file.  This bit of information combined with simple text
+manipulations can tell you where any reference coordinate is located in the
+alignment space.
+
 
 With a subwindow defined, you can now easily make a PDF plot for a collaborator 
 or powerpoint.  As an example, we'll look at one window where a "C" in the
