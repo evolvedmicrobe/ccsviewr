@@ -111,17 +111,18 @@ plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE) {
     drawBP <- function(j) {
       vpc = viewport(layout.pos.col = j, layout.pos.row = i)
       pushViewport(vpc)
+      # Color scheme from http://colorbrewer2.org/
       fcolor = "white"
       tcolor = "black"
       bp = seq[j]
       if(bp == "A") {
-        fcolor = "red"
+        fcolor = "#e41a1c"
       } else if(bp == "C") {
-        fcolor = "green"
+        fcolor = "#377eb8"
       } else if (bp == "G") {
-        fcolor="#ADD8E6"
+        fcolor="#4daf4a"
       } else if(bp=="T") {
-        fcolor = "grey"
+        fcolor = "#984ea3"
       }
       grid.rect(gp = gpar(fill=fcolor, col=NULL))
       grid.text(bp, gp=gpar(col=tcolor, cex=0.9))
