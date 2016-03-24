@@ -1,5 +1,23 @@
-##ccsviewr
+#ccsviewr
 
-An R package to examine alignments of CCS reads to a reference template to investigate problems with consensus.
+An R package to produce PDFs of alignments of CCS reads to a reference template along with every subread that was used to produce that CCS read.  This package aims to allow for users to gain certainty in a SNP call or to investigate problems with consensus accuracy.
 
-### This package is under active development and is not yet ready for release. 
+Example Sequence Alignment Shown Below:
+
+
+![](http://htmlpreview.github.io/?http://github.com/PacificBiosciences/ccsviewr/blob/master/vignettes/AlignmentWindow.png)
+
+## Documentation
+
+
+[The online vignette](http://htmlpreview.github.io/?http://github.com/PacificBiosciences/ccsviewr/blob/master/vignettes/ccsviewr.html)
+
+### Implementation details
+
+R Package Dependencies
+
+	- pbbamr
+	- grid
+	- Rcpp
+	
+The code uses grid to plot the multiple sequence alignments, and prints to a PDF with Courier font by default.  The aligner used is a simple Smith Waterman, but with a Deletion/Insertion more likely than a mismatch in order to mirror the PacBio error modes.
