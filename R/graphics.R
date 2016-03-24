@@ -75,7 +75,6 @@ plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE) {
 
   # Print in grid layout
   grid.newpage()
-  message(par()$family)
   base = grid.layout(ncol=2, widths = unit(c(idWidth, seqWidth), units = "inches"))
   vpbase = viewport(layout=base)
   pushViewport(vpbase)
