@@ -79,7 +79,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li>A BAM file with the original subreads</li>
 <li>A BAM file with the CCS reads aligned to a reference (can be generated with pbalign).</li>
-<li>A fasta file with the reference information.</li>
+<li>A fasta file that the CCS reads were aligned to</li>
 </ul>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
@@ -228,7 +228,7 @@ df$id =<span class="st"> </span><span class="kw">factor</span>(<span class="kw">
 <hr />
 <ol>
 <li id="fn1"><p>Note that very few programs show all insertions (for example they are not available in IGV). This is because showing all insertions can crowd the view, which is why we need to remove very noisy reads in the previous step.)<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>This is almost certainly because this ZMW had a C channel SNR of 1.85, while beneath the default threshold and outside of the range for which the consensus model is accurate.<a href="#fnref2">↩</a></p></li>
+<li id="fn2"><p>This is almost certainly because this ZMW had a C channel SNR of 1.85, well beneath the default threshold and outside of the range for which the consensus model is accurate.<a href="#fnref2">↩</a></p></li>
 </ol>
 </div>
 

@@ -16,7 +16,7 @@ printed to the screen or to a PDF.  To use it, one needs:
 
 - A BAM file with the original subreads
 - A BAM file with the CCS reads aligned to a reference (can be generated with pbalign).
-- A fasta file with the reference information.
+- A fasta file that the CCS reads were aligned to
 
 ## Installation
 
@@ -149,7 +149,7 @@ and then load it into a simple text editor to identify the window to plot.
 
 With a subwindow defined, you can now easily make a PDF plot for a collaborator 
 or powerpoint.  As an example, we'll look at one window where a "C" in the reference has been emitted as a "CC" 
-in consensus^[This is almost certainly because this ZMW had a C channel SNR of 1.85, while beneath the default threshold and outside of the range for which the consensus model is accurate.].
+in consensus^[This is almost certainly because this ZMW had a C channel SNR of 1.85, well beneath the default threshold and outside of the range for which the consensus model is accurate.].
 Additionally, we will make the plot a bit prettier by changing the read names to 
 remove the long movie/hold prefix.
 
