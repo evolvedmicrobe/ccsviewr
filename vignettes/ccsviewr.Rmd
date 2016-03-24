@@ -44,7 +44,7 @@ To begin, we will load the data and perform a series of pairwise alignments
 between the reference genome section aligned and all the subreads. The code
 below loads some example data distributed with the package containing a small
 BAM file, and we will use it to load the consensus read and subreads for all the
-data from ZMW #9.
+data from ZMW #9^[Typically one might want to investigate a CCS read that was identified by [ccscheck](https://github.com/PacificBiosciences/ccscheck)].
 
 ```{r, echo=TRUE, results='asis'}
 library(ccsviewr)
@@ -148,9 +148,11 @@ identified by a "|"), and then use those guides to define a window
 and then load it into a simple text editor to identify the window to plot.
 
 With a subwindow defined, you can now easily make a PDF plot for a collaborator 
-or powerpoint.  As an example, we'll look at one window where a "C" in the reference has been emitted as a "CC" 
-in consensus^[This is almost certainly because this ZMW had a C channel SNR of 1.85, well beneath the default threshold and outside of the range for which the consensus model is accurate.].
-Additionally, we will make the plot a bit prettier by changing the read names to 
+or powerpoint.  As an example, we'll look at one window where a "C" in the
+reference has been emitted as a "CC" in consensus ^[This is almost certainly
+because this ZMW had a C channel SNR of 1.85, well beneath the default threshold
+and outside of the range for which the consensus model is accurate.]. 
+Additionally, we will make the plot a bit prettier by changing the read names to
 remove the long movie/hold prefix.
 
 ```{r, echo=TRUE, eval=FALSE}

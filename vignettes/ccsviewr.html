@@ -97,7 +97,7 @@ install_github(&quot;PacificBiosciences/ccsviewr&quot;)
 <h2>Generating a multiple sequence alignment plot</h2>
 <div id="step-1---collect-pairwise-alignments" class="section level3">
 <h3>Step 1 - Collect pairwise alignments</h3>
-<p>To begin, we will load the data and perform a series of pairwise alignments between the reference genome section aligned and all the subreads. The code below loads some example data distributed with the package containing a small BAM file, and we will use it to load the consensus read and subreads for all the data from ZMW #9.</p>
+<p>To begin, we will load the data and perform a series of pairwise alignments between the reference genome section aligned and all the subreads. The code below loads some example data distributed with the package containing a small BAM file, and we will use it to load the consensus read and subreads for all the data from ZMW #9<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ccsviewr)
 <span class="co"># For this example, we will load some sample data</span>
 <span class="co"># distributed with the package.</span>
@@ -201,7 +201,7 @@ clean_alns =<span class="st"> </span>alns[-bad_alns]</code></pre></div>
 </div>
 <div id="step-3---convert-pairwise-alignments-to-data-frame" class="section level3">
 <h3>Step 3 - Convert pairwise alignments to data frame</h3>
-<p>Now we will convert the cleaned alignments into one large data frame. The key part of this process is “gapifying” all the pairwise alignments so that the available reference bases line up but that all insertions/deletions are shown<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>Now we will convert the cleaned alignments into one large data frame. The key part of this process is “gapifying” all the pairwise alignments so that the available reference bases line up but that all insertions/deletions are shown<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  df =<span class="st"> </span><span class="kw">AlnsToDataFrame</span>(clean_alns)</code></pre></div>
 </div>
 <div id="step-4---create-a-pdf-with-your-alignment" class="section level3">
@@ -214,7 +214,7 @@ clean_alns =<span class="st"> </span>alns[-bad_alns]</code></pre></div>
 <li><p>You can examine the whole alignment file and use the position guides at the top to select a window to plot (every 10 positions in the alignment are identified by a “|”), and then use those guides to define a window</p></li>
 <li><p>You can write the data frame to a CSV file (e.g. <code>write.csv(df, file=&quot;myMSA.csv&quot;)</code>) and then load it into a simple text editor to identify the window to plot.</p></li>
 </ul>
-<p>With a subwindow defined, you can now easily make a PDF plot for a collaborator or powerpoint. As an example, we’ll look at one window where a “C” in the reference has been emitted as a “CC” in consensus<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. Additionally, we will make the plot a bit prettier by changing the read names to remove the long movie/hold prefix.</p>
+<p>With a subwindow defined, you can now easily make a PDF plot for a collaborator or powerpoint. As an example, we’ll look at one window where a “C” in the reference has been emitted as a “CC” in consensus <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. Additionally, we will make the plot a bit prettier by changing the read names to remove the long movie/hold prefix.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Clean up the read names</span>
 rnames =<span class="st"> </span><span class="kw">as.character</span>(df$id)
 df$id =<span class="st"> </span><span class="kw">factor</span>(<span class="kw">sapply</span>(rnames, trimNamePrefix))
@@ -227,8 +227,9 @@ df$id =<span class="st"> </span><span class="kw">factor</span>(<span class="kw">
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Note that very few programs show all insertions (for example they are not available in IGV). This is because showing all insertions can crowd the view, which is why we need to remove very noisy reads in the previous step.)<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>This is almost certainly because this ZMW had a C channel SNR of 1.85, well beneath the default threshold and outside of the range for which the consensus model is accurate.<a href="#fnref2">↩</a></p></li>
+<li id="fn1"><p>Typically one might want to investigate a CCS read that was identified by <a href="https://github.com/PacificBiosciences/ccscheck">ccscheck</a><a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Note that very few programs show all insertions (for example they are not available in IGV). This is because showing all insertions can crowd the view, which is why we need to remove very noisy reads in the previous step.)<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>This is almost certainly because this ZMW had a C channel SNR of 1.85, well beneath the default threshold and outside of the range for which the consensus model is accurate.<a href="#fnref3">↩</a></p></li>
 </ol>
 </div>
 
