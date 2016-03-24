@@ -14,3 +14,17 @@ AlignRefAndRead <- function(ref, read) {
     .Call('ccsviewr_AlignRefAndRead', PACKAGE = 'ccsviewr', ref, read)
 }
 
+#' Takes a list of pairwise alignments and generates a data frame with the MSA
+#' sequence. The reference sequence is determined from the first alignment in
+#' the list. All reads are expanded by adding enough inserts to account for all
+#' of them.
+#'
+#' @param ref A string that is the reference window we are aligning to.
+#' @param read A list with elements name/read.
+#'
+#' @return Returns a list with the aligned read, ref and score
+#' @export
+AlnsToDataFrame <- function(alns) {
+    .Call('ccsviewr_AlnsToDataFrame', PACKAGE = 'ccsviewr', alns)
+}
+

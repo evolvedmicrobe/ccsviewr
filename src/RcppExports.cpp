@@ -17,3 +17,14 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// AlnsToDataFrame
+List AlnsToDataFrame(List alns);
+RcppExport SEXP ccsviewr_AlnsToDataFrame(SEXP alnsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< List >::type alns(alnsSEXP);
+    __result = Rcpp::wrap(AlnsToDataFrame(alns));
+    return __result;
+END_RCPP
+}

@@ -11,5 +11,9 @@ SystemRequirements: C++11
 Imports:
     Rcpp (>= 0.12.3),
     pbbamr
-LinkingTo:
-    Rcpp
+LinkingTo: Rcpp
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 5.0.1
