@@ -148,7 +148,8 @@ identified by a "|"), and then use those guides to define a window
 and then load it into a simple text editor to identify the window to plot.
 
 With a subwindow defined, you can now easily make a PDF plot for a collaborator 
-or powerpoint.  As an example, we'll look at one window with a mysterious error.
+or powerpoint.  As an example, we'll look at one window where a "C" in the reference has been emitted as a "CC" 
+in consensus^[This is almost certainly because this ZMW had a C channel SNR of 1.85, while beneath the default threshold and outside of the range for which the consensus model is accurate.].
 Additionally, we will make the plot a bit prettier by changing the read names to 
 remove the long movie/hold prefix.
 
