@@ -168,7 +168,7 @@ List AlnsToDataFrame(List alns) {
   seqs.reserve(N);
   NumericVector scores(N);
   CharacterVector ids(N);
-  ids[0] = "ref";
+  ids[0] = "Reference";
   scores[0] = 0;
   // Add in the reference
   seqs.push_back(gapifyReference(ref, gapSizes, fullsize));
