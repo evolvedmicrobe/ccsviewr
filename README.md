@@ -1,11 +1,11 @@
-#ccsviewr
+#ccsviewr -PDF images of CCS consensus sequences and subreads
 
 An R package to produce PDFs of alignments of CCS reads to a reference template along with every subread that was used to produce that CCS read.  This package aims to allow for users to gain certainty in a SNP call or to investigate problems with consensus accuracy.
 
-Example Sequence Alignment Shown Below:
+An example sequence alignment shown below:
 
 
-![](http://htmlpreview.github.io/?http://github.com/PacificBiosciences/ccsviewr/blob/master/vignettes/AlignmentWindow.png)
+![Alignment Image](https://github.com/PacificBiosciences/ccsviewr/blob/master/vignettes/AlignmentWindow.png)
 
 ## Documentation
 
