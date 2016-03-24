@@ -10,7 +10,8 @@ LazyData: TRUE
 SystemRequirements: C++11
 Imports:
     Rcpp (>= 0.12.3),
-    pbbamr
+    pbbamr,
+    grid
 LinkingTo: Rcpp
 Suggests:
     knitr,
