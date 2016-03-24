@@ -39,3 +39,29 @@ getAlignments <- function(hole, ccs_name, subreads_name, fasta_name) {
   alns = lapply(subreads, function(z) AlignRefAndRead(ref, z))
   c(list(ccs_aln), alns)
 }
+
+
+
+#' Determine the reference position in a multiple sequence alignment returned
+#' from AlnsToDataFrame.
+#'
+#' Typically, one will call plotMSA to view a variant call in an alignment, but
+#' that function takes coordinates in terms of alignment positions, not
+#' reference genome positions.  This function converts a reference genome
+#' location to an alignment location.  It does this by taking the start of the
+#' alignment on the genome, and then figures out how much further it needs to go
+#' to get the respective genome position in the alignment.
+#'
+#' @param tstart The initial position of the alignment.
+#' @param pos The
+#' @param df Data frame returned by AlnsToDataFrame.  The seq in the
+#' @param fasta_name Full path of the fasta file used to generate the CCS alignment
+#'
+#' @return Returns The genome position
+#' @export
+getRefPosition <- function(tstart, pos, df) {
+  neededPos = pos - tstart
+  ref = strsplit(as.character(df$seq[1]), "")[[1]]
+  poses = which(ref%in%c("A","C","G","T"))
+  poses[neededPos]
+}

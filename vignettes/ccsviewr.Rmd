@@ -147,11 +147,12 @@ identified by a "|"), and then use those guides to define a window
 - You can write the data frame to a CSV file (e.g. `write.csv(df, file="myMSA.csv")`)
 and then load it into a simple text editor to identify the window to plot.
 
-- You can calculate the window of interest **a priori**.  The refernce sequence
+- You can calculate the window of interest *a priori*.  The reference sequence 
 begins at the location given by the `tstart` field in the pbi index file for the
-aligned CCS BAM file.  This bit of information combined with simple text
-manipulations can tell you where any reference coordinate is located in the
-alignment space.
+aligned CCS BAM file.  This bit of information combined with simple text 
+manipulations can tell you where any reference coordinate is located in the 
+alignment space.  See `?getRefPos` for a function which converts genome
+coordinates to alignment coordinates.
 
 
 With a subwindow defined, you can now easily make a PDF plot for a collaborator 
