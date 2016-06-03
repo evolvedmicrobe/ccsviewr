@@ -18,7 +18,7 @@
 getAlignments <- function(hole, ccs_name, subreads_name, fasta_name) {
 
   # Load the CCS read and the reference
-  ind = pbbamr::loadpbi(ccs_name)
+  ind = pbbamr::loadPBI(ccs_name)
   cur = ind[ind$hole==hole,]
   if(nrow(cur) != 1) {
     stop("Could not find hole in CCS BAM index file.")
@@ -29,7 +29,7 @@ getAlignments <- function(hole, ccs_name, subreads_name, fasta_name) {
   ccs_aln = AlignRefAndRead(ref, ccs_seq)
 
   # Now get the subreads
-  ind_sub = pbbamr::loadpbi(subreads_name)
+  ind_sub = pbbamr::loadPBI(subreads_name)
   subs = ind_sub[ind_sub$hole==hole,]
   if(nrow(subs)==0) {
     stop("No subreads found for the hole in the BAM file.")
