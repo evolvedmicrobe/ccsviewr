@@ -4,7 +4,8 @@
 \alias{plotMSA}
 \title{Print a PDF of the MSA in a dataframe returned by the AlnsToDataFrame function.}
 \usage{
-plotMSA(df, pdfname, start = 0, end = -1, showPositions = TRUE)
+plotMSA(df, pdfname, start = 0, end = -1, showPositions = TRUE,
+  useOrigColors = FALSE)
 }
 \arguments{
 \item{df}{A data frame returned by a call to AlnsToDataFrame.}
@@ -14,6 +15,8 @@ plotMSA(df, pdfname, start = 0, end = -1, showPositions = TRUE)
 \item{start}{Optionally subset a portion of the alignment by specifying a start column.}
 
 \item{end}{Optionally subset a portion of the alignment by specifying an end column.}
+
+\item{useOrigColors}{Whether to use my original color scheme http://colorbrewer2.org/?type=qualitative&scheme=Set1&n=4}
 }
 \value{
 Returns a grid object with the alignment

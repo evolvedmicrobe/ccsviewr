@@ -15,10 +15,11 @@ mkDifString <- function(ref, ccs) {
 #' @param pdfname The name of the pdf file to output
 #' @param start Optionally subset a portion of the alignment by specifying a start column.
 #' @param end Optionally subset a portion of the alignment by specifying an end column.
+#' @param useOrigColors Whether to use my original color scheme http://colorbrewer2.org/?type=qualitative&scheme=Set1&n=4
 #'
 #' @return Returns a grid object with the alignment
 #' @export
-plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE) {
+plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE, useOrigColors = FALSE) {
 
   # Prepare and subset the data
   ids = as.character(df$id)
@@ -106,6 +107,17 @@ plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE) {
   mat = grid.layout(ncol = maxseq, nrow = N)#, respect = TRUE)
   vpmat = viewport(layout=mat)
   pushViewport(vpmat)
+  orgFillColors = c("#33a02c", "#a6cee3", "#1f78b4", "#b2df8a")
+  newFillColors = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3")
+  newTextColors = rep("black", 4)
+  orgTextColors = newTextColors
+  orgTextColors[3] = "white"
+  fillColors = newFillColors
+  textColors = newTextColors
+  if (useOrigColors) {
+    fillColors = orgFillColors
+    textColors = orgTextColors
+  }
   drawSeq <- function(i) {
     seq = strsplit(seqs[i], "")[[1]]
     drawBP <- function(j) {
@@ -116,13 +128,17 @@ plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE) {
       tcolor = "black"
       bp = seq[j]
       if(bp == "A") {
-        fcolor = "#e41a1c"
+        fcolor = fillColors[1]
+        tcolor = textColors[1]
       } else if(bp == "C") {
-        fcolor = "#377eb8"
+        fcolor = fillColors[2]
+        tcolor = textColors[2]
       } else if (bp == "G") {
-        fcolor="#4daf4a"
+        fcolor = fillColors[3]
+        tcolor = textColors[3]
       } else if(bp=="T") {
-        fcolor = "#984ea3"
+        fcolor = fillColors[4]
+        tcolor = textColors[4]
       }
       grid.rect(gp = gpar(fill=fcolor, col=NULL))
       grid.text(bp, gp=gpar(col=tcolor, cex=0.9))
