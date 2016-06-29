@@ -1,7 +1,18 @@
 #include <Rcpp.h>
-#include "Alignment.h"
-
+#include "AffineAlignment.h"
 using namespace Rcpp;
+
+
+
+Alignment Align(const std::string& target, const std::string& query, bool useAffine) {
+  if (useAffine) {
+    return AlignAffine(target, query);
+  } else {
+    return AlignSimple(target, query);
+  }
+}
+
+
 
 //' Align a read and a reference window.  Both the forward and reverse direction
 //' of the read will be  aligned, and only the highest scoring alignment will be
@@ -13,7 +24,7 @@ using namespace Rcpp;
 //' @return Returns a list with the aligned read, ref and score
 //' @export
 // [[Rcpp::export]]
-List AlignRefAndRead(std::string ref, List read) {
+List AlignRefAndRead(std::string ref, List read, bool useAffine = false) {
   // Verify read input
   if (read.size() !=2) {
     stop("Read is not a list of size 2");
@@ -25,9 +36,9 @@ List AlignRefAndRead(std::string ref, List read) {
   auto id = as<std::string>(read["name"]);
   std::string query = as<std::string>(read["read"]);
 
-  auto aln1 = Align(ref, query);
+  auto aln1 = Align(ref, query, useAffine);
   auto query_rc = ReverseComplement(query);
-  auto aln2 = Align(ref, query_rc);
+auto aln2 = Align(ref, query_rc, useAffine);
   Alignment aln;
   if (aln1.Score >= aln2.Score) {
     aln = aln1;

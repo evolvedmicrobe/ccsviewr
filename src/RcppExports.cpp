@@ -6,14 +6,15 @@
 using namespace Rcpp;
 
 // AlignRefAndRead
-List AlignRefAndRead(std::string ref, List read);
-RcppExport SEXP ccsviewr_AlignRefAndRead(SEXP refSEXP, SEXP readSEXP) {
+List AlignRefAndRead(std::string ref, List read, bool useAffine);
+RcppExport SEXP ccsviewr_AlignRefAndRead(SEXP refSEXP, SEXP readSEXP, SEXP useAffineSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< std::string >::type ref(refSEXP);
     Rcpp::traits::input_parameter< List >::type read(readSEXP);
-    __result = Rcpp::wrap(AlignRefAndRead(ref, read));
+    Rcpp::traits::input_parameter< bool >::type useAffine(useAffineSEXP);
+    __result = Rcpp::wrap(AlignRefAndRead(ref, read, useAffine));
     return __result;
 END_RCPP
 }

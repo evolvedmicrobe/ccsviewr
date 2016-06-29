@@ -21,6 +21,8 @@ class Alignment {
     Alignment() = default;
 };
 
-Alignment Align(const std::string& target, const std::string& query);
+std::string Reverse(const std::string& input);
+
+Alignment AlignSimple(const std::string& target, const std::string& query);
 
 std::string ReverseComplement(const std::string& seq);

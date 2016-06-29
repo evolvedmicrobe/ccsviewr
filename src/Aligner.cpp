@@ -37,7 +37,7 @@ std::string Reverse(const std::string& input)
 }
 
 
-Alignment Align(const std::string& target, const std::string& query)
+Alignment AlignSimple(const std::string& target, const std::string& query)
 {
 
   int I = query.length();

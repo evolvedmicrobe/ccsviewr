@@ -6,7 +6,7 @@
 of the read will be  aligned, and only the highest scoring alignment will be
 returned.}
 \usage{
-AlignRefAndRead(ref, read)
+AlignRefAndRead(ref, read, useAffine = FALSE)
 }
 \arguments{
 \item{ref}{A string that is the reference window we are aligning to.}
