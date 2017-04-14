@@ -69,7 +69,7 @@ Alignment AlignAffine(const std::string& target, const std::string& query,
   int i = I, j = J;
   int mat;
   double score;
-  if ( M(I, J) >= GAP(I, J) ) {
+  if ( M(I, J) > GAP(I, J) ) {
     mat = MATCH_MATRIX;
     score = M(I, J);
   } else {
