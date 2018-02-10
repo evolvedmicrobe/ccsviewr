@@ -19,7 +19,7 @@ mkDifString <- function(ref, ccs) {
 #'
 #' @return Returns a grid object with the alignment
 #' @export
-plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE, useOrigColors = FALSE) {
+plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE, useOrigColors = FALSE, showBases=TRUE, showDifString = TRUE) {
 
   # Prepare and subset the data
   ids = as.character(df$id)
@@ -31,9 +31,12 @@ plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE, useOrigCol
   names(seqs) <- NULL
 
   # Add in difference string
-  dif = mkDifString(seqs[1], seqs[2])
-  ids = c("", ids)
-  seqs = c(dif, seqs)
+  if(showDifString) {
+    dif = mkDifString(seqs[1], seqs[2])
+    seqs = c(dif, seqs)
+    ids = c("", ids)
+  }
+
 
   n_seq = nchar(seqs[1])
   if(showPositions) {
@@ -140,8 +143,10 @@ plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE, useOrigCol
         fcolor = fillColors[4]
         tcolor = textColors[4]
       }
-      grid.rect(gp = gpar(fill=fcolor, col=NULL))
-      grid.text(bp, gp=gpar(col=tcolor, cex=0.9))
+      grid.rect(gp = gpar(fill=fcolor, col=NA))
+      if(showBases) {
+        grid.text(bp, gp=gpar(col=tcolor, cex=0.9))
+      }
       popViewport()
     }
     sapply(1:length(seq), drawBP)
