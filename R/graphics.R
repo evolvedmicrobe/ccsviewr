@@ -97,7 +97,21 @@ plotMSA <- function(df, pdfname, start=0, end=-1, showPositions=TRUE, useOrigCol
   {
     vpc = viewport(layout.pos.row = i)
     pushViewport(vpc)
-    grid.text(ids[i], just=c("right", "center"), x=unit(0.98, "npc"))#, y=ypositions[i], x=0, just=just)
+    if(ids[i] == "dark") {
+      grid.text(ids[i], just=c("right", "center"), x=unit(0.98, "npc") ,
+                gp=gpar(fontface=2, col="black"))
+    } else if (ids[i] == "light") {
+      grid.text(ids[i], just=c("right", "center"), x=unit(0.98, "npc"),
+                gp=gpar(fontface=3))#, y=ypositions[i], x=0, just=just)
+    }
+    else if (ids[i] == "bunnanda") {
+      grid.text(ids[i], just=c("right", "center"), x=unit(0.98, "npc"),
+                gp=gpar(col="#1f78b4", fontface=2))#, y=ypositions[i], x=0, just=just)
+    }
+    else {
+      grid.text(ids[i], just=c("right", "center"), x=unit(0.98, "npc"), gp=gpar(col="#33a02c", fontface=2))
+    }
+    #377eb8
     popViewport()
   }
   lapply(1:N, drawId)
