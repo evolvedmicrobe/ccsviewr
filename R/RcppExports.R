@@ -11,7 +11,7 @@
 #' @return Returns a list with the aligned read, ref and score
 #' @export
 AlignRefAndRead <- function(ref, read, useAffine = FALSE) {
-    .Call('ccsviewr_AlignRefAndRead', PACKAGE = 'ccsviewr', ref, read, useAffine)
+    .Call('_ccsviewr_AlignRefAndRead', PACKAGE = 'ccsviewr', ref, read, useAffine)
 }
 
 #' Takes a list of pairwise alignments and generates a data frame with the MSA
@@ -25,6 +25,6 @@ AlignRefAndRead <- function(ref, read, useAffine = FALSE) {
 #' @return Returns a list with the aligned read, ref and score
 #' @export
 AlnsToDataFrame <- function(alns) {
-    .Call('ccsviewr_AlnsToDataFrame', PACKAGE = 'ccsviewr', alns)
+    .Call('_ccsviewr_AlnsToDataFrame', PACKAGE = 'ccsviewr', alns)
 }
 
